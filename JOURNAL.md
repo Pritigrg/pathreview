@@ -17,3 +17,20 @@ Branch name: docs/117-add-curl-examples
 Setup confirmation: App runs locally at localhost:5173
 
 Cohort ledger:Issue added to cohort ledger
+
+
+----------------
+
+# Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** 
+
+**Reproduction summary:**
+I reproduced the issue by running pytest tests/unit/test_relevance_scorer.py -k partial_overlap -q. The test failed with assert 1.0 < 0.9 because the query and chunk contain all four query keywords, causing the scorer to correctly return a full-overlap score of 1.0 instead of a partial-overlap score.
+
+**PLAN.md link:** 
+
+<!-- **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded] -->
+
+**Blockers or open questions:**
+I am still confirming whether the corrected test should check an exact expected score, such as pytest.approx(0.5), or only verify that the score is between 0.0 and 1.0.
