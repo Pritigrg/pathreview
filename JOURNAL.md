@@ -23,12 +23,12 @@ Cohort ledger:Issue added to cohort ledger
 
 # Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** 
+**Reproduction commit link:** https://github.com/Pritigrg/pathreview/commit/90143dc
 
 **Reproduction summary:**
 I reproduced the issue by running pytest tests/unit/test_relevance_scorer.py -k partial_overlap -q. The test failed with assert 1.0 < 0.9 because the query and chunk contain all four query keywords, causing the scorer to correctly return a full-overlap score of 1.0 instead of a partial-overlap score.
 
-**PLAN.md link:** 
+**PLAN.md link:** https://github.com/Pritigrg/pathreview/blob/relevance/PLAN.md
 
 <!-- **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded] -->
 
