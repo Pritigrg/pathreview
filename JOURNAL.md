@@ -36,3 +36,16 @@ I reproduced the issue by running pytest tests/unit/test_relevance_scorer.py -k 
 
 **Blockers or open questions:**
 I am still confirming whether the corrected test should check an exact expected score, such as pytest.approx(0.5), or only verify that the score is between 0.0 and 1.0.
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+I implemented the fix for issue #157 by updating the partial-overlap test fixture so that only two of the four query terms appear in the retrieved chunk. The reproduction and solution-planning tasks from PLAN.md are complete, and the targeted relevance scorer test now passes.
+
+**Next steps:**
+Run the complete unit test suite and project checks, open a draft pull request, request peer or mentor feedback, and address any relevant review comments.
+
+**Blockers:**
+None.
