@@ -49,3 +49,22 @@ Run the complete unit test suite and project checks, open a draft pull request, 
 
 **Blockers:**
 None.
+
+### Check-in 2 (end of week)
+
+**PR link:** https://github.com/ascherj/pathreview/pull/436
+
+**Branch:** `test/157-partial-overlap-fixture`
+
+**What you built:**
+I corrected the partial-overlap test fixture so that it contains only some of the query terms. The relevance scorer now produces a genuine partial-overlap score instead of the full score of `1.0`.
+
+**Tests added or updated:**
+Updated `tests/unit/test_relevance_scorer.py`. The targeted partial-overlap test now passes.
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+
+**Draft PR feedback received from:** none
+
+**Pre-existing failures:**
+Before my change, `make test-unit` reported 53 failed and 375 passed. After my change, it reported 52 failed and 376 passed. The remaining failures are pre-existing and unrelated to issue #157. `make check` also reports pre-existing repository-wide linting and type-checking issues. My change introduced no new failures.
