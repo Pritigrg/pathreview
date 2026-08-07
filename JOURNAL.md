@@ -67,3 +67,45 @@ Updated `tests/unit/test_relevance_scorer.py`. The modified test verifies that a
 
 **Pre-existing failures:**
 Before my change, `make test-unit` reported 53 failed and 375 passed. After my change, it reported 52 failed and 376 passed. The remaining failures are pre-existing and unrelated to issue #157. `make check` also reports pre-existing repository-wide linting and type-checking issues. My change introduced no new failures.
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+I did not receive any reviewer or maintainer feedback.
+
+**How you responded:**
+No response was needed because no feedback was received.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+The hardest part was figuring out whether the problem was in the relevance-scoring code or in the test itself. At first, I assumed the scorer might be wrong because the test was failing. After looking more closely, I noticed that the test called the example “partial overlap,” but the sample text actually contained all four query terms. Because of that, the scorer was correct to return `1.0`.
+
+
+**What did you learn about working in a large codebase?**
+I learned that a failing test does not always mean the production code is broken. Sometimes the test data or expected result is the real problem. It is important to reproduce the issue, understand the logic, and inspect the test carefully before changing the main code.
+
+I also learned that larger repositories may already contain failing tests, lint errors, or type-checking issues. In my case, `make test-unit` showed 53 failed and 375 passed tests before my change. After my fix, it showed 52 failed and 376 passed. This helped confirm that my change fixed the selected issue without creating any new problems.
+
+I also saw the importance of keeping a contribution focused. Since the scorer was already working correctly, I only changed the test fixture instead of making unnecessary changes to the production code.
+
+**How did AI tools help — and where did they fall short?**
+AI tools helped me understand the failed test case, logic for the overlap score.
+
+However, I still had to check every suggestion carefully. Some suggestions could have added unnecessary changes, such as fixing unrelated repository errors. I learned that AI can guide the process, but I still need to verify the code, test output, Git diff.
+
+**What would you do differently if you started over?**
+I would begin by running only the targeted test and manually comparing the query terms with the sample text. That would have helped me find the real issue faster.
+
+I would also record the original `make check` and `make test-unit` results before changing anything. I would keep the code change as small as possible.
+
+**What are you most proud of from this module?**
+I am most proud that I found the real cause of the failure and kept the fix simple. The original fixture contained all four query terms and produced a score of `1.0`. I changed it so that only two of the four terms were present, which produced the intended partial-overlap score of `0.5`.
+
+I am also proud that I verified the result carefully. The full test results changed from 53 failures and 375 passes to 52 failures and 376 passes, showing that my fix worked and did not introduce any new failures.
